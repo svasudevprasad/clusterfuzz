@@ -15,15 +15,15 @@
 # limitations under the License.
 
 # Setup pipenv and install python dependencies.
-$PYTHON -m pip install --user pipenv==2022.8.5
-if $PYTHON -m pipenv --venv > /dev/null 2>&1; then
+python3 -m pip install --user pipenv==2022.8.5
+if python3 -m pipenv --venv > /dev/null 2>&1; then
   # Remove existing pipenv virtual environment.
-  $PYTHON -m pipenv --rm
+  python3 -m pipenv --rm
 fi
 
-$PYTHON -m pipenv --python $PYTHON
-$PYTHON -m pipenv sync --dev
-source "$(${PYTHON} -m pipenv --venv)/bin/activate"
+python3 -m pipenv --python /usr/local/bin/python3
+python3 -m pipenv sync --dev
+source "$(python3 -m pipenv --venv)/bin/activate"
 
 if [ $install_android_emulator ]; then
   ANDROID_SDK_INSTALL_DIR=local/bin/android-sdk
